@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PharmaSync - Home</title>
+<script>
+  // Redirect to login immediately if not signed in yet
+  (function () {
+    const user = JSON.parse(localStorage.getItem("pharmasync_currentUser") || "null");
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  })();
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/components.css">
