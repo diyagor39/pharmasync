@@ -4,7 +4,7 @@
    Change BASE_URL once backend is deployed (Render link).
    ============================ */
 
-const BASE_URL = "http://localhost:5000/api"; // change to Render URL after deployment
+const BASE_URL = "https://pharmasync-backend-j9dw.onrender.com/api";// change to Render URL after deployment
 
 async function apiRequest(endpoint, method = "GET", body = null, requiresAuth = true) {
   const headers = { "Content-Type": "application/json" };
