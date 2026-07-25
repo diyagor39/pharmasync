@@ -1,0 +1,58 @@
+/* ============================
+   PharmaSync - Dashboard Styles
+   ============================ */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.stat-card .stat-label { font-size: 12px; color: var(--text-secondary); }
+.stat-card .stat-value { font-size: 24px; font-weight: 700; margin: 6px 0 4px; }
+.stat-card .stat-trend { font-size: 11px; }
+.stat-trend.up { color: var(--success-green); }
+.stat-trend.down { color: var(--danger-red); }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.data-table th, .data-table td {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table th { background: var(--bg-light-gray); color: var(--text-secondary); font-weight: 600; }
+.data-table tr:last-child td { border-bottom: none; }
+
+.panel {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.expiry-item, .redis-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.expiry-item:last-child, .redis-item:last-child { border-bottom: none; }
+
+/* Chart placeholder bar */
+.bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 100px; }
+.bar-chart .bar { flex: 1; background: var(--primary-blue); border-radius: 3px 3px 0 0; }

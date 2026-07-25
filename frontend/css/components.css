@@ -1,0 +1,203 @@
+/* ============================
+   PharmaSync - Component Styles
+   ============================ */
+
+/* Navbar */
+.navbar {
+  background: var(--primary-blue);
+  color: white;
+  padding: 14px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.navbar-brand i { font-size: 22px; }
+.navbar-greeting p { margin: 0; }
+.navbar-greeting .greeting-small { font-size: 11px; opacity: 0.85; }
+.navbar-greeting .greeting-name { font-size: 15px; font-weight: 500; }
+.navbar-icons { display: flex; gap: 16px; align-items: center; font-size: 20px; }
+.navbar-icons a { position: relative; color: white; }
+.navbar-icons .cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--danger-red);
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-search {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--radius-md);
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navbar-search input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 13px;
+  flex: 1;
+}
+.navbar-search input::placeholder { color: rgba(255,255,255,0.75); }
+
+/* Category row */
+.category-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 16px;
+  background: var(--bg-white);
+}
+.category-item { flex-shrink: 0; text-align: center; width: 64px; }
+.category-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 22px;
+}
+.category-item p { font-size: 11px; margin-top: 6px; color: var(--text-secondary); }
+
+.cat-blue { background: #E6F1FB; color: #185FA5; }
+.cat-amber { background: #FAEEDA; color: #854F0B; }
+.cat-green { background: #EAF3DE; color: #3B6D11; }
+.cat-red { background: #FCEBEB; color: #A32D2D; }
+.cat-purple { background: #EEEDFE; color: #3C3489; }
+.cat-pink { background: #FBEAF0; color: #993556; }
+
+/* AI dark card */
+.ai-card {
+  margin: 16px;
+  background: var(--dark-card);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+.ai-card i.ai-icon { font-size: 26px; color: var(--ai-green); }
+.ai-card .ai-title { font-size: 14px; font-weight: 600; margin: 0; }
+.ai-card .ai-sub { font-size: 12px; color: var(--dark-card-text); margin: 0; }
+.ai-card .ai-arrow { margin-left: auto; color: var(--dark-card-text); }
+
+/* Product / info cards */
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 16px 16px;
+}
+.product-card { background: var(--bg-white); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; }
+.product-card img { width: 100%; height: 110px; object-fit: cover; background: var(--bg-light-gray); }
+.product-card .product-info { padding: 10px; }
+.product-card .product-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.product-card .product-meta { font-size: 11px; color: var(--text-secondary); }
+.product-card .product-price { font-size: 14px; font-weight: 700; color: var(--primary-blue); margin-top: 6px; }
+.product-card .mrp { font-size: 11px; color: var(--text-light); text-decoration: line-through; margin-left: 6px; }
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 100;
+}
+.bottom-nav a { text-align: center; font-size: 10px; color: var(--text-light); }
+.bottom-nav a i { display: block; font-size: 19px; margin-bottom: 2px; }
+.bottom-nav a.active { color: var(--primary-blue); }
+
+/* Sidebar (dashboard) */
+.sidebar {
+  width: 220px;
+  background: var(--bg-white);
+  border-right: 1px solid var(--border-color);
+  min-height: 100vh;
+  padding: 20px 0;
+}
+.sidebar .brand { padding: 0 20px 20px; font-weight: 700; font-size: 18px; color: var(--primary-blue); }
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.sidebar a.active, .sidebar a:hover { background: var(--primary-blue-light); color: var(--primary-blue); border-right: 3px solid var(--primary-blue); }
+
+/* Layout with sidebar */
+.dashboard-layout { display: flex; min-height: 100vh; }
+.dashboard-main { flex: 1; padding: 24px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center; z-index: 999;
+}
+.modal-box {
+  background: white; border-radius: var(--radius-lg); padding: 24px;
+  width: 90%; max-width: 400px;
+}
+
+/* Login/signup card */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.auth-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-md);
+}
+.auth-logo { text-align: center; margin-bottom: 20px; }
+.auth-logo i { font-size: 34px; color: var(--primary-blue); }
+.auth-logo h1 { font-size: 20px; margin-top: 8px; }
+.role-select { display: flex; gap: 8px; margin-bottom: 18px; }
+.role-select button {
+  flex: 1; padding: 9px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color); background: white; font-size: 12px; font-weight: 500;
+}
+.role-select button.active { border-color: var(--primary-blue); background: var(--primary-blue-light); color: var(--primary-blue); }

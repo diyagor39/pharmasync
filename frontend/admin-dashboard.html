@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaSync - Admin Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="container mt-2">
+  <div class="flex-between mb-2">
+    <p class="section-title" style="margin:0;">Admin Dashboard</p>
+    <button class="btn btn-outline btn-sm" onclick="logout()">Log out</button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><p class="stat-label">Total Users</p><p class="stat-value" id="admin-total-users">0</p></div>
+    <div class="stat-card"><p class="stat-label">Pending Rx Verifications</p><p class="stat-value" id="admin-pending-rx">0</p></div>
+    <div class="stat-card"><p class="stat-label">Total Orders</p><p class="stat-value" id="admin-total-orders">0</p></div>
+    <div class="stat-card"><p class="stat-label">Active Listings</p><p class="stat-value" id="admin-listings">0</p></div>
+  </div>
+
+  <div class="panel">
+    <p class="section-title">Registered Users</p>
+    <table class="data-table">
+      <thead><tr><th>Name</th><th>Role</th><th>Email</th></tr></thead>
+      <tbody id="admin-users-table"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="bottomnav-placeholder"></div>
+
+<script>window.PAGE_CONFIG = { greeting: true, search: false, activeNav: "profile" };</script>
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/products.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/redistribution.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const users = DB.get("pharmasync_users", []);
+    const rx = DB.get("pharmasync_prescriptions", []);
+    const orders = await getOrders();
+    document.getElementById("admin-total-users").textContent = users.length;
+    document.getElementById("admin-pending-rx").textContent = rx.filter(r => r.status !== "Verified").length;
+    document.getElementById("admin-total-orders").textContent = orders.length;
+    document.getElementById("admin-listings").textContent = (await getRedistributionListings()).length;
+
+    document.getElementById("admin-users-table").innerHTML = users.length ? users.map(u => `
+      <tr><td>${u.name}</td><td>${u.role}</td><td>${u.email}</td></tr>
+    `).join("") : `<tr><td colspan="3" class="text-center text-muted">No users registered yet</td></tr>`;
+  });
+</script>
+</body>
+</html>

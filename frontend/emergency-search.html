@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaSync - Emergency Search</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="navbar" style="background:var(--danger-red);">
+  <div class="navbar-top">
+    <a href="index.html" style="color:white;"><i class="ti ti-arrow-left" style="font-size:20px;"></i></a>
+    <span style="font-weight:600;">Emergency Stock Search</span>
+    <span></span>
+  </div>
+  <div class="navbar-search">
+    <i class="ti ti-search"></i>
+    <input type="text" id="product-search" placeholder="Search a critical medicine by name">
+  </div>
+</div>
+
+<p class="container text-muted mt-2" style="font-size:13px;">
+  Showing nearby distributors and retailers with this medicine in stock right now.
+</p>
+<div class="card-grid" id="product-grid"></div>
+
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

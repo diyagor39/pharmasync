@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaSync - Retailer Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="container mt-2">
+  <div class="flex-between mb-2">
+    <p class="section-title" style="margin:0;">Retailer Dashboard</p>
+    <button class="btn btn-outline btn-sm" onclick="logout()">Log out</button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><p class="stat-label">Total Orders</p><p class="stat-value" id="stat-total-orders">0</p></div>
+    <div class="stat-card"><p class="stat-label">Total Spend</p><p class="stat-value" id="stat-total-spend">₹0</p></div>
+    <div class="stat-card"><p class="stat-label">Expiring Soon</p><p class="stat-value" id="stat-expiring">0</p></div>
+    <div class="stat-card"><p class="stat-label">Products Available</p><p class="stat-value" id="stat-products">0</p></div>
+  </div>
+
+  <div class="panel">
+    <p class="section-title">Quick actions</p>
+    <div class="flex-gap" style="flex-wrap:wrap;">
+      <a href="products.html" class="btn btn-primary btn-sm">Order Medicine</a>
+      <a href="voice-order.html" class="btn btn-outline btn-sm">Voice Order</a>
+      <a href="prescription-verify.html" class="btn btn-outline btn-sm">Verify Prescription</a>
+      <a href="redistribution.html" class="btn btn-outline btn-sm">Redistribution Marketplace</a>
+      <a href="ai-safety-check.html" class="btn btn-outline btn-sm">AI Safety Check</a>
+    </div>
+  </div>
+</div>
+
+<div id="bottomnav-placeholder"></div>
+
+<script>window.PAGE_CONFIG = { greeting: true, search: false, activeNav: "profile" };</script>
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/products.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

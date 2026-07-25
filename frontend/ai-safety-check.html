@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaSync - AI Safety Check</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  #scanner-video { width: 100%; max-width: 320px; border-radius: var(--radius-md); background: #000; margin: 0 auto; display: block; }
+</style>
+</head>
+<body>
+
+<div class="navbar" style="background:var(--dark-card);">
+  <div class="navbar-top">
+    <a href="index.html" style="color:white;"><i class="ti ti-arrow-left" style="font-size:20px;"></i></a>
+    <span style="font-weight:600;">AI Safety Check</span>
+    <span></span>
+  </div>
+</div>
+
+<div class="container mt-2">
+
+  <div class="panel">
+    <p class="section-title">Drug interaction &amp; dosage checker</p>
+    <form id="ai-check-form">
+      <div class="form-group">
+        <label>Medicines (comma separated)</label>
+        <input type="text" id="ai-medicines-input" class="form-control" placeholder="e.g. Azithral 500mg, Warfarin">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Check Safety</button>
+    </form>
+    <div id="ai-result"></div>
+  </div>
+
+  <div class="panel text-center">
+    <p class="section-title">Batch / QR authenticity scan</p>
+    <video id="scanner-video" autoplay muted playsinline></video>
+    <button id="scanner-start-btn" class="btn btn-primary mt-2">Start Scanner</button>
+    <p id="scanner-status" class="text-muted mt-1">Camera is off</p>
+    <div id="scanner-result" class="mt-2"></div>
+  </div>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ai-checker.js"></script>
+<script src="js/scanner.js"></script>
+</body>
+</html>
