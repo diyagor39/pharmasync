@@ -28,6 +28,11 @@
   </div>
 
   <div class="panel">
+    <p class="section-title">Pending Prescriptions</p>
+    <div id="admin-pending-rx-list"></div>
+  </div>
+
+  <div class="panel">
     <p class="section-title">Registered Users</p>
     <table class="data-table">
       <thead><tr><th>Name</th><th>Role</th><th>Email</th></tr></thead>
@@ -45,18 +50,56 @@
 <script src="js/orders.js"></script>
 <script src="js/redistribution.js"></script>
 <script>
+  async function loadPendingPrescriptions() {
+    const listEl = document.getElementById("admin-pending-rx-list");
+    try {
+      const records = await api.get("/prescriptions/pending");
+      document.getElementById("admin-pending-rx").textContent = records.length;
+
+      if (!records.length) {
+        listEl.innerHTML = `<div class="empty-state"><i class="ti ti-check"></i><p>No prescriptions waiting for review</p></div>`;
+        return;
+      }
+
+      listEl.innerHTML = records.map(r => `
+        <div class="card flex-between mb-1">
+          <div>
+            <p style="font-weight:600;font-size:13px;">${r.file_name}</p>
+            <p class="text-muted" style="font-size:12px;">${r.rx_code} · ${new Date(r.created_at).toLocaleString()}</p>
+          </div>
+          <div class="flex-gap">
+            <button class="btn btn-success btn-sm" onclick="approvePrescription('${r.rx_code}', true)">Approve</button>
+            <button class="btn btn-danger btn-sm" onclick="approvePrescription('${r.rx_code}', false)">Reject</button>
+          </div>
+        </div>
+      `).join("");
+    } catch (err) {
+      listEl.innerHTML = `<div class="empty-state"><p class="text-muted">Could not load pending prescriptions</p></div>`;
+    }
+  }
+
+  async function approvePrescription(rxCode, approve) {
+    try {
+      await api.post("/prescriptions/verify", { rxCode, approve });
+      showToast(approve ? "Prescription approved" : "Prescription rejected");
+      loadPendingPrescriptions();
+    } catch (err) {
+      showToast(err.message || "Could not update prescription", "error");
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", async () => {
     const users = DB.get("pharmasync_users", []);
-    const rx = DB.get("pharmasync_prescriptions", []);
     const orders = await getOrders();
     document.getElementById("admin-total-users").textContent = users.length;
-    document.getElementById("admin-pending-rx").textContent = rx.filter(r => r.status !== "Verified").length;
     document.getElementById("admin-total-orders").textContent = orders.length;
     document.getElementById("admin-listings").textContent = (await getRedistributionListings()).length;
 
     document.getElementById("admin-users-table").innerHTML = users.length ? users.map(u => `
       <tr><td>${u.name}</td><td>${u.role}</td><td>${u.email}</td></tr>
     `).join("") : `<tr><td colspan="3" class="text-center text-muted">No users registered yet</td></tr>`;
+
+    loadPendingPrescriptions();
   });
 </script>
 </body>
